@@ -1,14 +1,15 @@
-from django.shortcuts import render
-from rest_framework.viewsets import ModelViewSet
-from .models import Collection, BookMark
-from .serializers import CollectionSerializer, BookMarkSerializer
+from rest_framework import viewsets
+from .models import Collection, Link, ParsedData
+from .serializers import CollectionSerializer, LinkSerializer, ParsedDataSerializer
 
-
-class CollectionViewSet(ModelViewSet):
+class CollectionViewSet(viewsets.ModelViewSet):
     serializer_class = CollectionSerializer
     queryset = Collection.objects.all()
 
+class LinkViewSet(viewsets.ModelViewSet):
+    serializer_class = LinkSerializer
+    queryset = Link.objects.all()
 
-class BookMarkViewSet(ModelViewSet):
-    serializer_class = BookMarkSerializer
-    queryset = BookMark.objects.all()
+class ParsedDataViewSet(viewsets.ModelViewSet):
+    serializer_class = ParsedDataSerializer
+    queryset = ParsedData.objects.all()

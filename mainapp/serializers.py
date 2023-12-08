@@ -1,14 +1,17 @@
-from rest_framework.serializers import ModelSerializer
-from .models import Collection, BookMark
+from rest_framework import serializers
+from .models import Collection, Link, ParsedData
 
-
-class CollectionSerializer(ModelSerializer):
+class CollectionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
-        fields = "__all__"
+        fields = ['id', 'title', 'description', 'created_at', 'updated_at', 'user']
 
-
-class BookMarkSerializer(ModelSerializer):
+class LinkSerializer(serializers.ModelSerializer):
     class Meta:
-        model = BookMark
-        fields = "__all__"
+        model = Link
+        fields = ['id', 'url']
+
+class ParsedDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ParsedData
+        fields = ['id', 'link', 'title', 'description', 'link_type', 'image', 'collections']

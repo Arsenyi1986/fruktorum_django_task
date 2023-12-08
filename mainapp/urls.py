@@ -1,12 +1,12 @@
-from django.urls import include, path
-from rest_framework import routers
-from .views import CollectionViewSet, BookMarkViewSet
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import CollectionViewSet, LinkViewSet, ParsedDataViewSet
 
-router = routers.DefaultRouter()
-
+router = DefaultRouter()
 router.register(r'collections', CollectionViewSet)
-router.register(r'bookmarks', BookMarkViewSet)
+router.register(r'links', LinkViewSet)
+router.register(r'parsed-data', ParsedDataViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
